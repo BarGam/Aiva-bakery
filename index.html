@@ -19,15 +19,19 @@
       z-index: 1;
     }
 
-    video.background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -1;
+    .background-video {
+    width: 100%; /* Занимает всю ширину родителя */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    object-fit: cover; /* Обрезает видео, сохраняя заполнение */
+  }
+
+  /* Для вертикальных видео (мобилки) */
+  @media (max-aspect-ratio: 1/1) {
+    .background-video {
+      width: auto;
+      height: 100%; /* Занимает всю высоту */
     }
+  }
 
     h1 {
       font-size: 24px;
@@ -78,10 +82,9 @@
 <body>
 
   <!-- Фоновое видео -->
-  <video autoplay muted loop class="background-video">
-    <source src="test.mov" type="video/mp4">
-    Ваш браузер не поддерживает видео.
-  </video>
+<video autoplay muted loop class="background-video">
+  <source src="test.mov" type="video/mp4">
+</video>
 
   <img src="тест6.png" alt="лого">
   <h1>Выберите способ, как с нами связаться</h1>
