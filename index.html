@@ -112,3 +112,22 @@
   </div>
 </body>
 </html>
+
+<script>
+  // JS для гарантированного запуска
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.querySelector('.background-video');
+  
+  // Попытка автозапуска
+  const playAttempt = setInterval(() => {
+    video.play()
+      .then(() => clearInterval(playAttempt))
+      .catch(err => console.log('Автозапуск заблокирован, ждём взаимодействия'));
+  }, 1000);
+
+  // Запуск после клика пользователя
+  document.addEventListener('click', function() {
+    video.play();
+  }, { once: true });
+});
+</script>
